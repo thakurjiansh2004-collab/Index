@@ -1,0 +1,140 @@
+<html>
+    <head>
+
+        <style>
+
+            *{
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+                font-family: sans-serif;
+                font-weight: bold;
+            }
+            body{
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: coral;
+
+            }
+            .calcutator{
+                padding: 20px;
+                background-repeat: 1px solid red;
+                border-radius: 15px;
+                box-shadow: inset;
+                background-color: rgb(94, 241, 152);
+            }
+            input{
+                background-color: rgb(234, 48, 48);
+                width: 320px;
+                padding: 25px;
+                margin: 10px;
+                background-color: aqua;
+                font-size: 20px;
+                text-align: right;
+                border: 2px solid;
+                border-radius: 15px;
+
+            }
+            input::placeholder{
+                color: aliceblue;
+            }
+            button{
+                width: 60px;
+                margin-left: 12px;
+                height: 50px;
+                margin: 10px;
+                font-size: 20px;
+
+            }
+            .operator{
+                color: chocolate;
+            }
+            .equalbtn{
+                color: chocolate;
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <div class="calcutator">
+            <input type="text" placeholder="0" id="inputbox"/>
+            <div>
+                <button class="operator ac">AC</button>
+                <button class="operator del">DEL</button>
+                <button class="operator">%</button>
+                <button class="operator">/</button>
+            </div>
+ 
+            <div>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button class="operator">*</button>
+            </div>
+
+            <div>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button class="operator">-</button>
+            </div>
+            <div>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button class="operator">+</button>
+            </div>
+            <div>
+                <button>00</button>
+                <button>0</button>
+                <button>.</button>
+                <button class="equalbtn">=</button>
+            </div>
+
+        </div>
+
+
+        <script>
+
+           let display = document.getElementById('inputbox');
+           let buttons = document.querySelectorAll('button');
+
+           let buttonsArray = Array.from(buttons);
+
+           let string = '';
+
+           buttonsArray.forEach(function(btn){
+              btn.addEventListener('click',function(event){
+
+                if(event.target.innerHTML == 'DEL'){
+                    string = string.substring(0, string.length-1);
+                    display.value = string;
+                    
+                }
+                else if(event.target.innerHTML == 'AC'){
+                    string = '';
+                    display.value = string;
+                }
+                else if(event.target.innerHTML == '='){
+                    string = eval(string);
+                    display.value = string;
+                }
+                else{
+
+                   string += event.target.innerHTML;
+                   display.value = string;
+                }
+                
+              });
+           });
+
+        </script>
+
+
+    </body>
+</html>
